@@ -437,3 +437,22 @@ storage_rpc_getState(
     *flags = 0U;
     return OS_SUCCESS;
 }
+
+
+//------------------------------------------------------------------------------
+// This is a CAmkES RPC interface handler. It's guaranteed that "blockSize"
+// never points to NULL.
+OS_Error_t
+NONNULL_ALL
+storage_rpc_getBlockSize(
+    size_t* const blockSize)
+{
+    if (!ctx.init_ok)
+    {
+        Debug_LOG_ERROR("initialization failed, fail call %s()", __func__);
+        return OS_ERROR_INVALID_STATE;
+    }
+
+    *blockSize = ctx.spi_flash_ctx.cfg->page_sz;
+    return OS_SUCCESS;
+}
