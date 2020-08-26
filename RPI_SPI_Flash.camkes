@@ -32,6 +32,7 @@ import <if_OS_Storage.camkes>;
         dataport  Buf(BCM2837_SPI_REG_SIZE)  regBase; \
         \
         uses      if_OS_Timer                timeServer_rpc; \
+        consumes  TimerReady                 timeServer_notify; \
         \
         provides  if_OS_Storage              storage_rpc; \
         dataport  Buf                        storage_port; \

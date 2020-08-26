@@ -18,6 +18,10 @@
 
 #include <camkes.h>
 
+static const if_OS_Timer_t timer =
+    IF_OS_TIMER_ASSIGN(
+        timeServer_rpc,
+        timeServer_notify);
 
 static struct
 {
@@ -110,9 +114,13 @@ impl_spiflash_wait(
     spiflash_t* spi,
     uint32_t ms)
 {
-    // TimeServer.h provides this helper function, it contains the hard-coded
-    // assumption that the RPC interface is "timeServer_rpc"
-    TimeServer_sleep(TimeServer_PRECISION_MSEC, ms);
+    OS_Error_t err;
+
+    if ((err = TimeServer_sleep(&timer, TimeServer_PRECISION_MSEC,
+                                ms)) != OS_SUCCESS)
+    {
+        Debug_LOG_ERROR("TimeServer_sleep() failed with %d", err);
+    }
 }
 
 
