@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 #include <camkes.h>
 
@@ -202,7 +203,7 @@ void post_init(void)
 OS_Error_t
 __attribute__((__nonnull__))
 storage_rpc_write(
-    size_t  offset,
+    off_t   offset,
     size_t  size,
     size_t* written)
 {
@@ -210,7 +211,7 @@ storage_rpc_write(
     *written = 0;
 
     Debug_LOG_DEBUG(
-        "SPI write: offset %zu (0x%zx), size %zu (0x%zx)",
+        "SPI write: offset %" PRIiMAX " (0x%" PRIxMAX "), size %zu (0x%zx)",
         offset, offset, size, size);
 
     if (!ctx.init_ok)
@@ -235,7 +236,7 @@ storage_rpc_write(
     if (!isValidFlashArea(&(ctx.spi_flash_ctx), offset, size))
     {
         Debug_LOG_ERROR(
-            "write area at offset %zu with size %zu out of bounds",
+            "write area at offset %" PRIiMAX " with size %zu out of bounds",
             offset, size);
         return OS_ERROR_OUT_OF_BOUNDS;
     }
@@ -292,7 +293,7 @@ storage_rpc_write(
 OS_Error_t
 __attribute__((__nonnull__))
 storage_rpc_read(
-    size_t  offset,
+    off_t   offset,
     size_t  size,
     size_t* read)
 {
@@ -300,7 +301,7 @@ storage_rpc_read(
     *read = 0;
 
     Debug_LOG_DEBUG(
-        "SPI read: offset %zu (0x%zx), size %zu (0x%zx)",
+        "SPI read: offset %" PRIiMAX " (0x%" PRIxMAX "), size %zu (0x%zx)",
         offset, offset, size, size);
 
     if (!ctx.init_ok)
@@ -325,7 +326,7 @@ storage_rpc_read(
     if (!isValidFlashArea(&(ctx.spi_flash_ctx), offset, size))
     {
         Debug_LOG_ERROR(
-            "read area at offset %zu with size %zu out of bounds",
+            "read area at offset %" PRIiMAX " with size %zu out of bounds",
             offset, size);
 
         return OS_ERROR_OUT_OF_BOUNDS;
@@ -339,7 +340,8 @@ storage_rpc_read(
     if (ret < 0)
     {
         Debug_LOG_ERROR(
-            "SPIFLASH_read() failed, offset %zu (0x%zx), size %zu (0x%zx), code %d",
+            "SPIFLASH_read() failed, offset %" PRIiMAX " (0x%" PRIxMAX "), "
+            "size %zu (0x%zx), code %d",
             offset, offset, size, size, ret);
         return OS_ERROR_GENERIC;
     }
@@ -356,15 +358,16 @@ storage_rpc_read(
 OS_Error_t
 __attribute__((__nonnull__))
 storage_rpc_erase(
-    size_t  offset,
-    size_t  size,
-    size_t* erased)
+    off_t  offset,
+    off_t  size,
+    off_t* erased)
 {
     // set defaults
     *erased = 0;
 
     Debug_LOG_DEBUG(
-        "SPI erase: offset %zu (0x%zx), size %zu (0x%zx)",
+        "SPI erase: offset %" PRIiMAX " (0x%" PRIxMAX "), "
+        "size %" PRIiMAX " (0x%" PRIxMAX ")",
         offset, offset, size, size);
 
     if (!ctx.init_ok)
@@ -376,7 +379,8 @@ storage_rpc_erase(
     if (!isValidFlashArea(&(ctx.spi_flash_ctx), offset, size))
     {
         Debug_LOG_ERROR(
-            "erase area at offset %zu with size %zu out of bounds",
+            "erase area at offset %" PRIiMAX " with size %" PRIiMAX " out of "
+            "bounds",
             offset, size);
         return OS_ERROR_OUT_OF_BOUNDS;
     }
@@ -385,7 +389,8 @@ storage_rpc_erase(
     if (ret < 0)
     {
         Debug_LOG_ERROR(
-            "SPIFLASH_erase() failed, offset %zu (0x%zx), size %zu (0x%zx), code %d",
+            "SPIFLASH_erase() failed, offset %" PRIiMAX " (0x%" PRIxMAX "), "
+            "size %" PRIiMAX " (0x%" PRIxMAX "), code %d",
             offset, offset, size, size, ret);
         return OS_ERROR_GENERIC;
     }
@@ -401,7 +406,7 @@ storage_rpc_erase(
 OS_Error_t
 __attribute__((__nonnull__))
 storage_rpc_getSize(
-    size_t* size)
+    off_t* size)
 {
     if (!ctx.init_ok)
     {
