@@ -155,13 +155,13 @@ void post_init(void)
         .addr_sz = 3,                           // 3 byte SPI addressing
         .addr_dummy_sz = 0,                     // using single line data, not quad
         .addr_endian = SPIFLASH_ENDIANNESS_BIG, // big endianess on addressing
-        .sr_write_ms = 15,                      // write delay (typical 10 ms, max 15 ms)
+        .sr_write_ms = 10,                      // write delay (typical 10 ms, max 15 ms)
         .page_program_ms = 3,                   // page programming takes typical 0.8 ms, max 3 ms
-        .block_erase_4_ms = 300,                // 4 KiB block erase takes typical 45 ms, max 300 ms
-        .block_erase_8_ms = 0,                  // 8 KiB block erase is not supported
-        .block_erase_16_ms = 0,                 // 16 KiB block erase is not supported
-        .block_erase_32_ms = 800,               // 32 KiB block erase takes typical 120 ms, max 800 ms
-        .block_erase_64_ms = 1000,              // 64 KiB block erase takes typical 150 ms, max 1000 ms
+        .block_erase_4_ms = 50,                // 4k block erase takes typical 45 ms, max 300 ms
+        .block_erase_8_ms = 0,                  // 8k block erase is not supported
+        .block_erase_16_ms = 0,                 // 16k block erase is not supported
+        .block_erase_32_ms = 800,               // 32k block erase takes typical 120 ms, max 800 ms
+        .block_erase_64_ms = 1000,              // 64k block erase takes typical 150 ms, max 1000 ms
         .chip_erase_ms = 6000                   // chip erase takes typical 2 sec, max 6 sec
     };
 
