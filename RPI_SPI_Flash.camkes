@@ -1,7 +1,17 @@
 /*
- * RasPi SPI Flash storage driver
+ * Copyright (C) 2020, Hensoldt Cyber GmbH
+ */
+
+/*
+ *  RPi_SPI_Flash CAmkES Component
  *
- * Copyright (C) 2020, HENSOLDT Cyber GmbH
+ *  to be used as:
+ *
+ *      #include "NIC_RPI/NIC_RPi.camkes"
+ *
+ *      RPi_SPI_Flash_COMPONENT_DECLARE(RPi_SPI_Flash)
+ *      RPi_SPI_Flash_HW_COMPONENT_DECLARE(RPi_SPI_Flash_HW)
+ *
  */
 
 import <if_OS_Timer.camkes>;
@@ -19,6 +29,13 @@ import <if_OS_Storage.camkes>;
 //------------------------------------------------------------------------------
 
 
+/*
+ * Declare the RPi_SPI_Flash HW component:
+ *
+ *      RPi_SPI_Flash_HW_COMPONENT_DECLARE(
+ *          <name>
+ *      )
+ */
 #define RPi_SPI_Flash_HW_COMPONENT_DECLARE( \
     _name_) \
     \
@@ -28,6 +45,13 @@ import <if_OS_Storage.camkes>;
     }
 
 
+/*
+ * Declare the RPi_SPI_Flash driver component:
+ *
+ *      RPi_SPI_Flash_COMPONENT_DECLARE(
+ *          <name>
+ *      )
+ */
 #define RPi_SPI_Flash_COMPONENT_DECLARE( \
     _name_) \
     \
@@ -45,6 +69,14 @@ import <if_OS_Storage.camkes>;
 //------------------------------------------------------------------------------
 
 
+/*
+ * Connect a RPi_SPI_Flash driver instance to the HW instance.
+ *
+ *      RPi_SPI_Flash_INSTANCE_CONNECT(
+ *          <nic>,
+ *          <hw>,
+ *      )
+ */
 #define RPi_SPI_Flash_INSTANCE_CONNECT( \
     _inst_, \
     _inst_hw_) \
@@ -56,6 +88,17 @@ import <if_OS_Storage.camkes>;
         );
 
 
+//------------------------------------------------------------------------------
+
+
+/*
+ * Assign client interface:
+ *
+ *      RPi_SPI_Flash_INSTANCE_CONNECT_CLIENT(
+ *          <instance>,
+ *          <storage>.<rpc>, <storage>.<port>
+ *      )
+ */
 #define RPi_SPI_Flash_INSTANCE_CONNECT_CLIENT( \
     _inst_, \
     _peer_inst_rpc_, \
@@ -77,6 +120,13 @@ import <if_OS_Storage.camkes>;
 //------------------------------------------------------------------------------
 
 
+/*
+ * Let RPi_SPI_Flash configure itself:
+ *
+ *      RPi_SPI_Flash_HW_INSTANCE_CONFIGURE_SELF(
+ *          <instance>
+ *      )
+ */
 #define RPi_SPI_Flash_HW_INSTANCE_CONFIGURE_SELF( \
     _inst_) \
     \
