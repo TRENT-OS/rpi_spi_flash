@@ -32,7 +32,7 @@ function(RPi_SPI_Flash_DeclareCAmkESComponent name)
     DeclareCAmkESComponent(
         ${name}
         SOURCES
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/RPI_SPI_Flash.c
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/RPi_SPI_Flash.c
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bcm2837_gpio.c
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bcm2837_spi.c
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/spiflash.c
