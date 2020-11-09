@@ -9,8 +9,8 @@
  *
  *      #include "NIC_RPI/NIC_RPi.camkes"
  *
- *      RPi_SPI_Flash_COMPONENT_DECLARE(RPi_SPI_Flash)
- *      RPi_SPI_Flash_HW_COMPONENT_DECLARE(RPi_SPI_Flash_HW)
+ *      RPi_SPI_Flash_COMPONENT_DEFINE(RPi_SPI_Flash)
+ *      RPi_SPI_Flash_HW_COMPONENT_DEFINE(RPi_SPI_Flash_HW)
  *
  */
 
@@ -32,11 +32,11 @@ import <if_OS_Storage.camkes>;
 /*
  * Declare the RPi_SPI_Flash HW component:
  *
- *      RPi_SPI_Flash_HW_COMPONENT_DECLARE(
+ *      RPi_SPI_Flash_HW_COMPONENT_DEFINE(
  *          <name>
  *      )
  */
-#define RPi_SPI_Flash_HW_COMPONENT_DECLARE( \
+#define RPi_SPI_Flash_HW_COMPONENT_DEFINE( \
     _name_) \
     \
     component _name_ { \
@@ -48,11 +48,11 @@ import <if_OS_Storage.camkes>;
 /*
  * Declare the RPi_SPI_Flash driver component:
  *
- *      RPi_SPI_Flash_COMPONENT_DECLARE(
+ *      RPi_SPI_Flash_COMPONENT_DEFINE(
  *          <name>
  *      )
  */
-#define RPi_SPI_Flash_COMPONENT_DECLARE( \
+#define RPi_SPI_Flash_COMPONENT_DEFINE( \
     _name_) \
     \
     component _name_ { \
