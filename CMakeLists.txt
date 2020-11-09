@@ -18,12 +18,12 @@ cmake_minimum_required(VERSION 3.17)
 #   LIBS <lib_1> <lib_2> ...
 #     additional libraries. At least a TimeServer client library is required
 #
-function(DeclareCAmkESComponent_RPI_SPI_Flash name)
+function(RPi_SPI_Flash_DeclareCAmkESComponent name)
 
     cmake_parse_arguments(
         PARSE_ARGV
         1
-        RPI_SPI_Flash
+        RPi_SPI_Flash
         ""
         ""
         "LIBS"
@@ -42,7 +42,7 @@ function(DeclareCAmkESComponent_RPI_SPI_Flash name)
         LIBS
             os_core_api
             os_libs
-            ${RPI_SPI_Flash_LIBS}
+            ${RPi_SPI_Flash_LIBS}
     )
 
 endfunction()
