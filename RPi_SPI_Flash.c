@@ -143,7 +143,8 @@ void post_init(void)
     // divider 8 gives 50 MHz assuming the RasPi3 is running with the default
     // 400 MHz, but for some reason we force it to run at just 250 MHz with
     // "core_freq=250" in config.txt and thus end up at 31.25 MHz SPI speed.
-    bcm2837_spi_setClockDivider(BCM2837_SPI_CLOCK_DIVIDER_8);
+    // bcm2837_spi_setClockDivider(BCM2837_SPI_CLOCK_DIVIDER_8);
+    bcm2837_spi_setClockDivider(BCM2837_SPI_CLOCK_DIVIDER_16);
     bcm2837_spi_chipSelect(BCM2837_SPI_CS0);
     bcm2837_spi_setChipSelectPolarity(BCM2837_SPI_CS0, 0);
 
