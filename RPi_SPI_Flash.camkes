@@ -16,6 +16,7 @@
 
 #pragma once
 
+import <std_connector.camkes>;
 import <if_OS_Timer.camkes>;
 import <if_OS_Storage.camkes>;
 
