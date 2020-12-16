@@ -2,6 +2,8 @@
  * RasPi SPI Flash storage driver
  *
  * Copyright (C) 2020, HENSOLDT Cyber GmbH
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 #include "OS_Error.h"
