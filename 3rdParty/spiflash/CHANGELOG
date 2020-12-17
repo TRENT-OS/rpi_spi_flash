@@ -1,0 +1,14 @@
+2020-07-27 HENSOLDT Cyber GmbH
+
+    Adapt for the Raspberry Pi 3 Model B+ platform
+
+    * spiflash.h
+        (formatting):            Apply our formatting.
+        (pragma once):           Use `pragma once` instead of include guards.
+        (licensing):             Add missing SPDX license id.
+
+    * spiflash.c
+        (formatting):            Apply our formatting rules.
+        (licensing):             Add missing SPDX license id.
+        (_spiflash_begin_async): Disable `SPIFLASH_OP_WRITE_sDATA` case.
+        (_spiflash_end_async):   Disable `SPIFLASH_OP_WRITE_sDATA` case.
