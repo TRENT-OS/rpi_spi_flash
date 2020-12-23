@@ -46,7 +46,7 @@ function(RPi_SPI_Flash_DeclareCAmkESComponent name)
             -Werror
         LIBS
             os_core_api
-            os_libs
+            lib_debug
             ${RPi_SPI_Flash_LIBS}
     )
 
