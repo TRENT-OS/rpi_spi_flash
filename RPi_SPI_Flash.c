@@ -64,11 +64,11 @@ impl_spiflash_spi_txrx(
     uint8_t* rx_buffer,
     uint32_t rx_len)
 {
-    // we can't use the rx_buffer directly, because bcm2837_spi_transfernb()
+    // We can't use the rx_buffer directly, because bcm2837_spi_transfernb()
     // already populates it when sending the tx bytes. The actual data received
     // starts at offset tx_len then. For flash reading we support obtaining
-    // 4 KiByte blocks at once and there a 4 byte protocol overhead for the SPI
-    // command (1 command byte and 3 address bytes).
+    // 4 KiB (4096 bytes) blocks at once and add there a 4 byte protocol
+    // overhead for the SPI command (1 command byte and 3 address bytes).
     static uint8_t buffer[1 + 3 + 4096];
 
     const uint32_t len = tx_len + rx_len;
@@ -146,21 +146,21 @@ void post_init(void)
     bcm2837_spi_chipSelect(BCM2837_SPI_CS0);
     bcm2837_spi_setChipSelectPolarity(BCM2837_SPI_CS0, 0);
 
-    // setting of the W25Q64 Flash with 8 MiByte storage space
+    // setting of the W25Q64 Flash with 64 Mibit (= 8 MiB) storage space
     static const spiflash_config_t spiflash_config =
     {
-        .sz = 1024 * 1024 * 8,                  // 8 MiByte flash
+        .sz = 1024 * 1024 * 8,                  // 8 MiB flash
         .page_sz = 256,                         // 256 byte pages
         .addr_sz = 3,                           // 3 byte SPI addressing
         .addr_dummy_sz = 0,                     // using single line data, not quad
         .addr_endian = SPIFLASH_ENDIANNESS_BIG, // big endianess on addressing
         .sr_write_ms = 15,                      // write delay (typical 10 ms, max 15 ms)
         .page_program_ms = 3,                   // page programming takes typical 0.8 ms, max 3 ms
-        .block_erase_4_ms = 300,                // 4k block erase takes typical 45 ms, max 300 ms
-        .block_erase_8_ms = 0,                  // 8k block erase is not supported
-        .block_erase_16_ms = 0,                 // 16k block erase is not supported
-        .block_erase_32_ms = 800,               // 32k block erase takes typical 120 ms, max 800 ms
-        .block_erase_64_ms = 1000,              // 64k block erase takes typical 150 ms, max 1000 ms
+        .block_erase_4_ms = 300,                // 4 KiB block erase takes typical 45 ms, max 300 ms
+        .block_erase_8_ms = 0,                  // 8 KiB block erase is not supported
+        .block_erase_16_ms = 0,                 // 16 KiB block erase is not supported
+        .block_erase_32_ms = 800,               // 32 KiB block erase takes typical 120 ms, max 800 ms
+        .block_erase_64_ms = 1000,              // 64 KiB block erase takes typical 150 ms, max 1000 ms
         .chip_erase_ms = 6000                   // chip erase takes typical 2 sec, max 6 sec
     };
 
