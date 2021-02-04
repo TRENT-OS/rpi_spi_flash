@@ -2,7 +2,6 @@
 # RasPi3 (BCM2837) SPI Flash storage driver
 #
 # Copyright (C) 2020-2021, HENSOLDT Cyber GmbH
-#
 # SPDX-License-Identifier: BSD-3-Clause
 #
 

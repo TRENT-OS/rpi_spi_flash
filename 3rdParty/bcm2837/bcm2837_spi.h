@@ -1,12 +1,7 @@
 /*
- * Copyright (C) 2020, HENSOLDT Cyber GmbH
+ * Copyright (C) 2011-2013 Mike McCauley
+ * Copyright (C) 2020-2021, HENSOLDT Cyber GmbH
  * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
-/*
- *  Code based on https://www.airspayce.com/mikem/bcm2835/index.html
- *  GPL Version 3, see https://www.gnu.org/licenses/gpl-3.0.html and COPYING
- *  Copyright (C) 2011-2013 Mike McCauley
  */
 
 #pragma once
