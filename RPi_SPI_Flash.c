@@ -54,6 +54,35 @@ isValidFlashArea(
 }
 
 
+// //------------------------------------------------------------------------------
+// static
+// __attribute__((__unused__))
+// void
+// read_and_dump(
+//     spiflash_t* spi_flash_ctx,
+//     size_t  const offset,
+//     size_t  const size)
+// {
+//     static uint8_t buffer[512];  // could pick any size here
+//
+//     size_t read_size = sizeof(buffer);
+//     if (read_size > size)
+//     {
+//         read_size = size;
+//     }
+//     int ret = do_spi_flash_read(spi_flash_ctx, offset, read_size, buffer);
+//     if (ret < 0)
+//     {
+//         Debug_LOG_ERROR(
+//             "do_spi_flash_read() failed, offset %zu (0x%zx), size %zu, code %d",
+//             offset, offset, read_size, ret);
+//         return;
+//     }
+//
+//     Debug_DUMP_INFO(buffer, read_size);
+// }
+
+
 //------------------------------------------------------------------------------
 // callback from SPI library
 static
@@ -151,7 +180,7 @@ void post_init(void)
     // setting of the W25Q64 Flash with 64 Mibit (= 8 MiB) storage space
     static const spiflash_config_t spiflash_config =
     {
-        .sz = 1024 * 1024 * 8,                  // 8 MiB flash
+        .sz = 1024 * 1024 * 64,                 // 64 MiByte flash
         .page_sz = 256,                         // 256 byte pages
         .addr_sz = 3,                           // 3 byte SPI addressing
         .addr_dummy_sz = 0,                     // using single line data, not quad
