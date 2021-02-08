@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2011-2013 Mike McCauley
  * Copyright (C) 2020-2021, HENSOLDT Cyber GmbH
- * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-License-Identifier: GPL-3.0-only
  */
 
 #include "bcm2837_gpio.h"
