@@ -377,7 +377,7 @@ extern void bcm2837_peri_set_bits(volatile uint32_t* paddr, uint32_t value,
   \param[in] pin GPIO number, or one of RPI_GPIO_P1_* from \ref RPiGPIOPin.
   \param[in] mode Mode to set the pin to, one of BCM2837_GPIO_FSEL_* from \ref bcm2837FunctionSelect
 */
-extern void bcm2837_gpio_fsel(uint8_t pin, uint8_t mode);
+extern void bcm2837_gpio_fselect(uint8_t pin, uint8_t mode);
 
 /*! Sets the specified pin output to
   HIGH.

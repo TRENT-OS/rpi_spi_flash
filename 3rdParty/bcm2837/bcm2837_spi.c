@@ -86,11 +86,11 @@ int bcm2837_spi_begin(void* vaddr)
     bcm2837_spi0 = (uint32_t*)(vaddr + (BCM2837_SPI0_BASE - BCM2837_GPIO_BASE));
 
     /* Set the SPI0 pins to the Alt 0 function to enable SPI0 access on them */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_26, BCM2837_GPIO_FSEL_ALT0); /* CE1 */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_24, BCM2837_GPIO_FSEL_ALT0); /* CE0 */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_21, BCM2837_GPIO_FSEL_ALT0); /* MISO */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_19, BCM2837_GPIO_FSEL_ALT0); /* MOSI */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_23, BCM2837_GPIO_FSEL_ALT0); /* CLK */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_26, BCM2837_GPIO_FSEL_ALT0); /* CE1 */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_24, BCM2837_GPIO_FSEL_ALT0); /* CE0 */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_21, BCM2837_GPIO_FSEL_ALT0); /* MISO */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_19, BCM2837_GPIO_FSEL_ALT0); /* MOSI */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_23, BCM2837_GPIO_FSEL_ALT0); /* CLK */
 
     /* Set the SPI CS register to the some sensible defaults */
     paddr = bcm2837_spi0 + BCM2837_SPI0_CS / 4;
@@ -105,11 +105,11 @@ int bcm2837_spi_begin(void* vaddr)
 void bcm2837_spi_end(void)
 {
     /* Set all the SPI0 pins back to input */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_26, BCM2837_GPIO_FSEL_INPT); /* CE1 */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_24, BCM2837_GPIO_FSEL_INPT); /* CE0 */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_21, BCM2837_GPIO_FSEL_INPT); /* MISO */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_19, BCM2837_GPIO_FSEL_INPT); /* MOSI */
-    bcm2837_gpio_fsel(RPI_GPIO_P1_23, BCM2837_GPIO_FSEL_INPT); /* CLK */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_26, BCM2837_GPIO_FSEL_INPT); /* CE1 */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_24, BCM2837_GPIO_FSEL_INPT); /* CE0 */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_21, BCM2837_GPIO_FSEL_INPT); /* MISO */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_19, BCM2837_GPIO_FSEL_INPT); /* MOSI */
+    bcm2837_gpio_fselect(RPI_GPIO_P1_23, BCM2837_GPIO_FSEL_INPT); /* CLK */
 }
 
 void bcm2837_spi_setBitOrder(uint8_t order)
@@ -330,10 +330,10 @@ int bcm2837_aux_spi_begin(void)
     }
 
     /* Set the SPI pins to the Alt 4 function to enable SPI1 access on them */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_36, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_CE2_N */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_35, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_MISO */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_38, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_MOSI */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_40, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_SCLK */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_36, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_CE2_N */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_35, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_MISO */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_38, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_MOSI */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_40, BCM2837_GPIO_FSEL_ALT4);   /* SPI1_SCLK */
 
     bcm2837_aux_spi_setClockDivider(bcm2837_aux_spi_CalcClockDivider(
                                         1000000));  // Default 1MHz SPI
@@ -348,10 +348,10 @@ int bcm2837_aux_spi_begin(void)
 void bcm2837_aux_spi_end(void)
 {
     /* Set all the SPI1 pins back to input */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_36, BCM2837_GPIO_FSEL_INPT);   /* SPI1_CE2_N */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_35, BCM2837_GPIO_FSEL_INPT);   /* SPI1_MISO */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_38, BCM2837_GPIO_FSEL_INPT);   /* SPI1_MOSI */
-    bcm2837_gpio_fsel(RPI_V2_GPIO_P1_40, BCM2837_GPIO_FSEL_INPT);   /* SPI1_SCLK */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_36, BCM2837_GPIO_FSEL_INPT);   /* SPI1_CE2_N */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_35, BCM2837_GPIO_FSEL_INPT);   /* SPI1_MISO */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_38, BCM2837_GPIO_FSEL_INPT);   /* SPI1_MOSI */
+    bcm2837_gpio_fselect(RPI_V2_GPIO_P1_40, BCM2837_GPIO_FSEL_INPT);   /* SPI1_SCLK */
 }
 
 uint16_t bcm2837_aux_spi_CalcClockDivider(uint32_t speed_hz)

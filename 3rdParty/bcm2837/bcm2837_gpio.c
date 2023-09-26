@@ -92,7 +92,7 @@ void bcm2837_gpio_init(void* vaddr)
 //      X / 10 + ((X % 10) * 3)
 */
 
-void bcm2837_gpio_fsel(uint8_t pin, uint8_t mode)
+void bcm2837_gpio_fselect(uint8_t pin, uint8_t mode)
 {
     /* Function selects are 10 pins per 32 bit word, 3 bits per pin */
     volatile uint32_t* paddr = bcm2837_gpio + BCM2837_GPFSEL0 / 4 + (pin / 10);
