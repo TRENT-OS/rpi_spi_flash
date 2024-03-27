@@ -37,10 +37,10 @@ function(RPi_SPI_Flash_DeclareCAmkESComponent name)
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/RPi_SPI_Flash.c
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/bcm2837/bcm2837_gpio.c
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/bcm2837/bcm2837_spi.c
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/spiflash/spiflash.c
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/spiflash_driver/src/spiflash.c
         INCLUDES
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/bcm2837
-            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/spiflash
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/3rdParty/spiflash/src
         C_FLAGS
             -Wall
             -Werror

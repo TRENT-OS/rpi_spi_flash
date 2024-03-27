@@ -1,0 +1,3 @@
+[submodule "3rdParty/spiflash_driver"]
+	path = 3rdParty/spiflash_driver
+	url = ../spiflash_driver.git
