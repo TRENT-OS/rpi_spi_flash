@@ -9,7 +9,7 @@
  *
  *  to be used as:
  *
- *      #include "NIC_RPI/NIC_RPi.camkes"
+ *      #include "NIC_RPi3Bplus/NIC_RPi.camkes"
  *
  *      RPi_SPI_Flash_COMPONENT_DEFINE(RPi_SPI_Flash)
  *      RPi_SPI_Flash_HW_COMPONENT_DEFINE(RPi_SPI_Flash_HW)
